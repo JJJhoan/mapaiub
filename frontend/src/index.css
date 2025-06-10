@@ -16,3 +16,31 @@ body {
 .custom-scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+@layer utilities {
+  .blurred-edges::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom right, #0f172a, #065f46);
+    border-radius: 0.75rem;
+    transform: translate(-100%, 100%);
+    transition:
+      transform 0.7s ease,
+      mask-image 0.4s ease,
+      -webkit-mask-image 0.4s ease;
+    z-index: 0;
+
+    /* Bordes difuminados con máscara radial */
+    mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
+  }
+
+  .group:hover .blurred-edges::before {
+    transform: translate(0, 0);
+
+    /* Quitar la máscara cuando el fondo ya cubre */
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}

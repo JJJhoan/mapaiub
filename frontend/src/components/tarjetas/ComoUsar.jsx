@@ -6,11 +6,11 @@ export default function ComoUsar() {
       <h2 className="mb-10 text-lg text-slate-950 md:text-xl lg:text-2xl font-bold">
         Cómo Usar
       </h2>
-      <div className="grid grid-cols-3 items-start gap-5">
+      <div className="grid grid-cols-3 items-start gap-x-10 gap-y-5">
 
         <div className="grid grid-cols-1 gap-5">
+          <h2 className="text-slate-900 font-semibold text-lg mb-2">Mapa Interactivo</h2>
           <TarjetasComoUsar
-            titulo="Mapa Interactivo"
             texto="Una vez dentro del mapa, podrás ver la totalidad de espacios de la sede Plaza de la Paz. Entre ellos salones, zonas de recreación, cafetería, oficinas y más."/>
           
           <TarjetasComoUsar
@@ -21,8 +21,8 @@ export default function ComoUsar() {
         </div>
 
         <div className="grid grid-cols-1 gap-5">
+          <h2 className="text-slate-900 font-semibold text-lg mb-2">Eventos</h2>
           <TarjetasComoUsar 
-          titulo="Eventos" 
           texto="Te darás cuenta de que dentro de la página del mapa interactivo, habrá un apartado lateral en el que podrás acceder a los eventos, los cuales pueden ser academicos, culturales e institucionales."/>
           
           <TarjetasComoUsar 
@@ -33,8 +33,8 @@ export default function ComoUsar() {
         </div>
 
         <div className="grid grid-cols-1 gap-5">
+          <h2 className="text-slate-900 font-semibold text-lg mb-2">Calendario</h2>
           <TarjetasComoUsar 
-          titulo="Calendario" 
           texto="En el calendario tendrás la posibilidad de visualizar todos los eventos y fechas importantes. Las fechas que se muestran se dividen en 2: "/>
           
           <TarjetasComoUsar 
@@ -54,20 +54,30 @@ export default function ComoUsar() {
 function TarjetasComoUsar({ titulo, texto }) {
   return (
     <div className="
-      group
-      shadow-lg bg-slate-100 p-3 rounded-xl
-      hover:bg-slate-800 hover:scale-105
-      duration-300 
-      w-70 h-fit select-none
-      border-2 border-dashed border-gray-400
-      hover:border-amber-400
+      relative group overflow-hidden
+      shadow-lg bg-slate-100 p-4 rounded-xl
+      w-full h-fit mb-5 select-none
+      border-2 border-dashed hover:border-solid border-slate-300
+      hover:border-amber-400 transition-all hover:scale-[1.02]
+      duration-300 hover:-translate-y-3
     ">
-      <p className="font-bold mb-2 group-hover:text-amber-400">
-        {titulo}
-      </p>
-      <p className="group-hover:text-amber-300">
-        {texto}
-      </p>
+      <div className="
+        absolute inset-0 z-0
+        before:content-[''] before:absolute before:inset-0
+        before:bg-gradient-to-b before:from-amber-200 before:to-yellow-400
+        before:transition-transform before:duration-300
+        before:translate-x-0 before:translate-y-[100%]
+        group-hover:before:translate-x-0 group-hover:before:translate-y-0
+        before:rounded-lg
+      "></div>
+      <div className="relative z-10">
+
+        <p className="text-slate-700 
+          transition-colors duration-300 delay-100 
+          group-hover:text-amber-700">
+          {texto}
+        </p>
+      </div>
     </div>
   );
 }

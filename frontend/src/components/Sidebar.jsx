@@ -1,18 +1,35 @@
 import React, { useState } from "react";
+import {
+  House,
+  Question,
+  MapTrifold,
+  Calendar,
+  ChartBar,
+  Cpu,
+  Info,
+  Gear,
+  ClipboardText,
+  CaretDown
+} from "@phosphor-icons/react";
+
 import { motion, AnimatePresence } from "framer-motion";
 
-function SidebarButtons({ items, handleClick }) {
+function SidebarButtons({ items, handleClick, iconosPorEtiqueta }) {
   return (
     <div className="grid grid-cols-1 gap-2 p-2">
-      {items.map((label, i) => (
-        <button
-          key={i}
-          onClick={() => handleClick(label)}
-          className="py-2 px-4 w-full h-full text-xs font-bold text-gray-500 rounded flex justify-items-start hover:border-l-5 hover:bg-slate-700 hover:border-slate-950 hover:text-amber-300 active:bg-slate-700 transition-all duration-100"
-        >
-          {label}
-        </button>
-      ))}
+      {items.map((label, i) => {
+        const Icon = iconosPorEtiqueta[label];
+        return (
+          <button
+            key={i}
+            onClick={() => handleClick(label)}
+            className="py-2 px-1 w-full h-full text-xs font-bold text-gray-500 rounded flex items-center gap-2 hover:border-l-5 hover:bg-slate-700 hover:border-slate-950 hover:text-amber-300 active:bg-slate-700 transition-all duration-100"
+          >
+            {Icon && <Icon size={20} />}
+            <span>{label}</span>
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -20,9 +37,21 @@ function SidebarButtons({ items, handleClick }) {
 export default function Sidebar({ onSelect }) {
   const info = ["Página Principal", "Cómo Usar"];
   const apps = ["Mapa Interactivo", "Calendario"];
-  const dev = ["Estadísticas", "Tecnologías", "Sobre Nosotros"];
+  const dev = ["Estadísticas", "Tecnologias", "Sobre Nosotros"];
   const pref = ["Preferencias"];
   const admin = ["Eventos Settings"];
+
+  const iconosPorEtiqueta = {
+    "Página Principal": House,
+    "Cómo Usar": Question,
+    "Mapa Interactivo": MapTrifold,
+    "Calendario": Calendar,
+    "Estadísticas": ChartBar,
+    "Tecnologias": Cpu,
+    "Sobre Nosotros": Info,
+    "Preferencias": Gear,
+    "Eventos Settings": ClipboardText,
+  };
 
   const secciones = [
     { titulo: "Inicio", items: info },
@@ -41,7 +70,6 @@ export default function Sidebar({ onSelect }) {
     }));
   };
 
-  // Variants para la animación de abrir/cerrar
   const variants = {
     open: {
       opacity: 1,
@@ -56,7 +84,9 @@ export default function Sidebar({ onSelect }) {
   };
 
   return (
-    <div className="bg-slate-50 h-screen w-40 shadow-[2px_0_5px_rgba(0,0,0,0.1)] fixed overflow-y-scroll custom-scrollbar-hide">
+    <div
+      className="bg-slate-50 h-screen w-40 shadow-[2px_0_5px_rgba(0,0,0,0.1)] fixed overflow-y-scroll custom-scrollbar-hide"
+    >
       <div className="flex items-baseline">
         <img src="/logoiubdark.png" className="w-15 m-4 mb-1 mr-2 pt-3 " />
         <p className="font-bold text-2xl mb-3">NAV</p>
@@ -74,11 +104,11 @@ export default function Sidebar({ onSelect }) {
                 className="text-lg ml-2 inline-block transition-transform duration-300"
                 style={{
                   transform: abiertas[seccion.titulo]
-                    ? "rotate(180deg)"
+                    ? "rotate(-180deg)"
                     : "rotate(0deg)",
                 }}
               >
-                ▼
+                <CaretDown size={24} />
               </span>
             </button>
           )}
@@ -93,7 +123,11 @@ export default function Sidebar({ onSelect }) {
                 variants={variants}
                 className="overflow-hidden"
               >
-                <SidebarButtons items={seccion.items} handleClick={onSelect} />
+                <SidebarButtons
+                  items={seccion.items}
+                  handleClick={onSelect}
+                  iconosPorEtiqueta={iconosPorEtiqueta}
+                />
               </motion.div>
             )}
           </AnimatePresence>
