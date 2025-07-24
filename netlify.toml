@@ -1,0 +1,7 @@
+[build]
+  base = "frontend"
+  command = "npm install && npm run build"  # Instala dependencias primero
+  publish = "netlify-build"
+
+[context.production.environment]
+  NODE_VERSION = "18.0.0"  # Usa la misma versión que en tu local
