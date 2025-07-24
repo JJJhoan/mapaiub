@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { EnvelopeSimple, LockKey } from "@phosphor-icons/react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useUser } from "./context/UserContext";
+import { useUser } from "./context/userContext";
 import toast from "react-hot-toast";
 
 export default function Login() {
