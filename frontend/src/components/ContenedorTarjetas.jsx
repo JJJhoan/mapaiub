@@ -1,29 +1,29 @@
 import React, { useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "../context/ThemeContext"; // Importa el hook useTheme
 
 import PaginaPrincipal from "./tarjetas/PaginaPrincipal";
 import ComoUsar from "./tarjetas/ComoUsar";
-import MapaInteractivo from "./tarjetas/MapaInteractivo";
 import Calendario from "./tarjetas/Calendario";
 import Estadisticas from "./tarjetas/Estadisticas";
 import Tecnologias from "./tarjetas/Tecnologias";
 import SobreNosotros from "./tarjetas/SobreNosotros";
-import Preferencias from "./tarjetas/Preferencias";
-import EventosSettings from "./tarjetas/InterfazEventosAdmin/EventosSettings";
+import Usuario from "./tarjetas/Usuario";
+import EventosSettings from "./tarjetas/Eventos/EventosSettings";
 
 const tarjetas = {
   "Página Principal": PaginaPrincipal,
   "Cómo Usar": ComoUsar,
-  "Mapa Interactivo": MapaInteractivo,
   "Calendario": Calendario,
   "Estadísticas": Estadisticas,
   "Tecnologias": Tecnologias,
   "Sobre Nosotros": SobreNosotros,
-  "Preferencias": Preferencias,
+  "Usuario": Usuario,
   "Eventos Settings": EventosSettings
 };
 
 export default function ContenedorTarjetas({ seccionActual }) {
+  const { isDark } = useTheme(); // Obtiene el estado del tema
   const Componente = tarjetas[seccionActual];
   const scrollRef = useRef(null);
 
@@ -40,7 +40,9 @@ export default function ContenedorTarjetas({ seccionActual }) {
   return (
     <div
       ref={scrollRef}
-      className="relative h-screen overflow-y-scroll custom-scrollbar-hide ml-42 p-4 flex justify-center items-start"
+      className={`select-none relative h-screen w-auto ml-40 sm:ml-14 md:ml-40 overflow-y-scroll custom-scrollbar-hide p-4 flex justify-center items-start transition-all scroll-hide ${
+        isDark ? 'bg-gray-900' : 'bg-white'
+      }`}
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -49,7 +51,11 @@ export default function ContenedorTarjetas({ seccionActual }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.2 }}
-          className="bg-slate-50 border-2 border-blue-100 w-[1200px] min-h-full shadow-xl rounded-lg p-6"
+          className={`w-[1200px] min-h-full shadow-xl rounded-lg p-6 transition-colors duration-300 ${
+            isDark 
+              ? 'bg-gray-800 border-gray-700' 
+              : 'bg-slate-50 border-2 border-blue-100'
+          }`}
         >
           <Componente />
         </motion.div>

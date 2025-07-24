@@ -1,22 +1,71 @@
 @import "tailwindcss";
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* Estilos base */
+html {
+  scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* IE 10+ */
+}
+
 body {
   font-family: 'Quicksand', sans-serif;
-  background-color: rgba(255, 255, 255, 0.657);
-  margin: 0px;
-  padding: 0px;
-  width: 100%;
-  height: 100%;
+  background-color: rgb(15, 23, 42);
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.custom-scrollbar-hide {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.custom-scrollbar-hide::-webkit-scrollbar {
-  display: none;
+/* Scrollbars invisibles pero funcionales */
+.scroll-hide {
+  scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* IE 10+ */
+  overflow-y: auto;              /* Permite scroll */
 }
 
+.scroll-hide::-webkit-scrollbar {
+  display: none;                 /* Chrome, Safari */
+}
+
+/* Input number sin spinner - Versión corregida */
+.no-spinner {
+  -webkit-appearance: none;  /* Chrome, Safari, Edge, Opera */
+  -moz-appearance: textfield; /* Firefox */
+  appearance: none; /* Estándar moderno */
+}
+
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Transiciones */
+.transition-transform {
+  transition-property: transform;
+}
+
+/* Datepicker animations */
+.react-datepicker-popper {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999 !important;
+}
+
+.react-datepicker-popper.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.react-datepicker-popper.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Efectos especiales */
 @layer utilities {
   .blurred-edges::before {
     content: "";
@@ -30,16 +79,12 @@ body {
       mask-image 0.4s ease,
       -webkit-mask-image 0.4s ease;
     z-index: 0;
-
-    /* Bordes difuminados con máscara radial */
     mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
     -webkit-mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
   }
 
   .group:hover .blurred-edges::before {
     transform: translate(0, 0);
-
-    /* Quitar la máscara cuando el fondo ya cubre */
     mask-image: none;
     -webkit-mask-image: none;
   }

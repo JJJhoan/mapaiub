@@ -1,4 +1,5 @@
 import EstadisticaCard from "./EstadisticaCard";
+import { useTheme } from "../../context/ThemeContext";
 
 const dataEventos = [
   { mes: "Ene", value: 1 },
@@ -16,9 +17,15 @@ const dataEventos = [
 ];
 
 export default function Dashboard() {
+  const { isDark } = useTheme();
+
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-5">Estadísticas Generales</h1>
+    <div className={`transition-colors duration-300 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
+      <h1 className={`text-2xl font-bold mb-5 ${
+        isDark ? 'text-gray-100' : 'text-slate-900'
+      }`}>
+        Estadísticas Generales
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <EstadisticaCard
           title="Eventos por Mes"
@@ -38,9 +45,10 @@ export default function Dashboard() {
             { mes: "Feb", value: 3.8 },
             { mes: "Mar", value: 4.2 },
           ]}
-          color="#38bdf8" // sky-400
+          color="#facc15"
           unit="sesiones"
         />
+
         <EstadisticaCard
           title="Reservas de Espacios"
           value="127"
@@ -52,7 +60,7 @@ export default function Dashboard() {
             { mes: "Abr", value: 91 },
             { mes: "May", value: 127 },
           ]}
-          color="#4ade80" // green-400
+          color="#facc15"
           unit="reservas"
         />
 
@@ -66,7 +74,7 @@ export default function Dashboard() {
             { mes: "Mar", value: 7 },
             { mes: "Abr", value: 9 },
           ]}
-          color="#f87171" // red-400
+          color="#facc15"
           unit="eventos"
         />
 
@@ -81,12 +89,12 @@ export default function Dashboard() {
             { mes: "Abr", value: 1200 },
             { mes: "May", value: 1250 },
           ]}
-          color="#818cf8" // indigo-400
+          color="#facc15"
           unit="visitas"
         />
 
         <EstadisticaCard
-          title="Interacciones con Calendario"
+          title="Estadistica prueba"
           value="312"
           change="+33.2% este mes"
           data={[
@@ -95,8 +103,8 @@ export default function Dashboard() {
             { mes: "Mar", value: 230 },
             { mes: "Abr", value: 312 },
           ]}
-          color="#fb923c" // orange-400
-          unit="clics"
+          color="#facc15"
+          unit="Unidad"
         />
       </div>
     </div>

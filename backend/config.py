@@ -1,0 +1,9 @@
+MYSQL_HOST = "127.0.0.1"
+MYSQL_USER = "root"
+MYSQL_PASSWORD = ""  
+MYSQL_DB = "sistema_eventos(2)" 
+HEX_SEC_KEY = "d5fb8cf748abd46638ddac4e751ed868d" 
+
+CLOUD_NAME = "dqt3xhhxl"
+CLOUD_API_KEY = "262965633357197"
+CLOUD_API_SECRET = "daHmDasGlUpv3ndMVGKl_jUkgIk"

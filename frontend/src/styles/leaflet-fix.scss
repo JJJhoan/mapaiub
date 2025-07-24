@@ -1,0 +1,30 @@
+// Fix para los iconos de Leaflet
+.leaflet-container {
+  .leaflet-marker-icon,
+  .leaflet-marker-shadow,
+  .leaflet-tile {
+    filter: none !important;
+  }
+  
+  // Fix para los controles de zoom
+  .leaflet-control-zoom-in,
+  .leaflet-control-zoom-out {
+    font-size: 18px !important;
+    line-height: 26px !important;
+  }
+}
+/* Estilos para los popups */
+.leaflet-popup-content {
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.leaflet-popup-content h3 {
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+
+.leaflet-popup-content p {
+  color: #475569;
+  font-size: 0.875rem;
+}
