@@ -1,7 +1,12 @@
 [build]
   base = "frontend"
-  command = "npm install && npm run build"  # Instala dependencias primero
-  publish = "netlify-build"
+  command = "npm ci --production=false && npm run build"
+  publish = "netlify-build"  # <-- Usa el nombre exacto de tu carpeta generada
 
 [context.production.environment]
-  NODE_VERSION = "18.0.0"  # Usa la misma versión que en tu local
+  NODE_VERSION = "20.12.2"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
