@@ -16,7 +16,7 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: '../netlify-build',
+    outDir: './netlify-build',
     emptyOutDir: true,
     rollupOptions: {
       output: {

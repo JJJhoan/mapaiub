@@ -1,12 +1,7 @@
 [build]
   base = "frontend"
   command = "npm ci --production=false && npm run build"
-  publish = "netlify-build"  # <-- Usa el nombre exacto de tu carpeta generada
+  publish = "frontend/netlify-build" # Ruta exacta desde la raíz del repo
 
 [context.production.environment]
   NODE_VERSION = "20.12.2"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
