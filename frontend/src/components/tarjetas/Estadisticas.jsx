@@ -20,13 +20,15 @@ export default function Dashboard() {
   const { isDark } = useTheme();
 
   return (
-    <div className={`transition-colors duration-300 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
-      <h1 className={`text-2xl font-bold mb-5 ${
-        isDark ? 'text-gray-100' : 'text-slate-900'
-      }`}>
-        Estadísticas Generales
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className={`transition-colors duration-300 ${isDark ? 'bg-gray-800' : ''}`}>
+      <div className="w-full flex justify-center items-center">
+        <h1 className={`text-2xl font-bold mb-5 ${
+          isDark ? 'text-gray-100' : 'text-slate-900'
+        }`}>
+          Estadísticas Generales
+        </h1>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ml-4">
         <EstadisticaCard
           title="Eventos por Mes"
           value="+2,350"

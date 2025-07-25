@@ -1,42 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate para redireccionar
+import { useUser } from "../../context/userContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Usuario() {
   const { isDark, toggleTheme } = useTheme();
-  const [sessionTime, setSessionTime] = useState("00:00:00");
-  const navigate = useNavigate(); // Para redirección
+  const { usuario, esAdmin, getFormattedSessionTime, cerrarSesion } = useUser();
+  const navigate = useNavigate();
   
-  // Datos de ejemplo
-  const usuario = {
-    nombre: "Ana García",
-    email: "ana.garcia@example.com",
-    rol: "Estudiante",
-  };
-
-  // Contador de tiempo de sesión
+  // Estado para el tiempo de sesión
+  const [formattedTime, setFormattedTime] = useState(getFormattedSessionTime());
+  
+  // Actualizar el tiempo cada segundo
   useEffect(() => {
-    const startTime = new Date();
-    const timer = setInterval(() => {
-      const now = new Date();
-      const diff = new Date(now - startTime);
-      setSessionTime(
-        diff.toISOString().substr(11, 8) // Formato HH:MM:SS
-      );
+    const interval = setInterval(() => {
+      setFormattedTime(getFormattedSessionTime());
     }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
+    
+    return () => clearInterval(interval);
+  }, [getFormattedSessionTime]);
+  
   const handleLogout = () => {
-    // Aquí agregarías la lógica para cerrar sesión
+    cerrarSesion();
     console.log("Sesión cerrada");
     navigate("/");
   };
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-4">
         <div className={`max-w-md mx-auto rounded-xl shadow-lg overflow-hidden p-8 transition-all duration-300 ${
           isDark ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-800'
         }`}>
@@ -59,29 +51,31 @@ export default function Usuario() {
           <div className="space-y-6">
             <div className="space-y-1">
               <p className="text-sm font-medium opacity-80">Nombre completo</p>
-              <p className="text-lg font-semibold">{usuario.nombre}</p>
+              <p className="text-lg font-semibold">
+                {usuario?.nombre || (esAdmin ? "Administrador" : "Estudiante")}
+              </p>
             </div>
 
             <div className="space-y-1">
               <p className="text-sm font-medium opacity-80">Correo electrónico</p>
-              <p className="text-lg">{usuario.email}</p>
+              <p className="text-lg">{usuario?.email || "usuario@example.com"}</p>
             </div>
 
             <div className="space-y-1">
               <p className="text-sm font-medium opacity-80">Rol</p>
               <p className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
-                usuario.rol === "Administrador" 
+                esAdmin 
                   ? (isDark ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-800')
                   : (isDark ? 'bg-green-600 text-white' : 'bg-green-100 text-green-800')
               }`}>
-                {usuario.rol}
+                {esAdmin ? "Administrador" : "Estudiante"}
               </p>
             </div>
 
             <div className="space-y-1">
               <p className="text-sm font-medium opacity-80">Tiempo de sesión</p>
               <div className="flex items-center gap-2">
-                <span className="text-lg font-mono">{sessionTime}</span>
+                <span className="text-lg font-mono">{formattedTime}</span>
                 <span className={`text-xs px-2 py-1 rounded ${
                   isDark ? 'bg-gray-700' : 'bg-gray-100'
                 }`}>

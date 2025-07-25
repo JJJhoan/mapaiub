@@ -5,12 +5,14 @@ export default function ComoUsar() {
   const { isDark } = useTheme();
 
   return (
-    <div className={`transition-colors duration-300 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
-      <h2 className={`mb-10 text-lg md:text-xl lg:text-2xl font-bold ${
-        isDark ? 'text-gray-100' : 'text-slate-950'
-      }`}>
-        Cómo Usar
-      </h2>
+    <div className={`transition-colors duration-300 ${isDark ? 'bg-gray-800' : ''}`}>
+      <div className="w-full flex justify-center">
+        <h2 className={`mb-10 text-lg md:text-xl lg:text-2xl font-bold ${
+          isDark ? 'text-gray-100' : 'text-slate-950'
+        }`}>
+          Cómo Usar
+        </h2>
+      </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start gap-x-10 gap-y-5">
 
         <div className="grid grid-cols-1 gap-3">

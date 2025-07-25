@@ -21,7 +21,7 @@ export default function SidebarWrapper({ onSelect, esInvitado }) {
       <button
         onClick={toggleSidebar}
         aria-label="Toggle sidebar"
-        className={`md:hidden fixed top-4 left-4 z-50 p-2 rounded-full shadow-lg transition-colors ${
+        className={`md:hidden fixed top-6 left-6 z-50 p-2 rounded-full shadow-lg transition-colors ${
           isDark ? 'bg-gray-700 text-gray-100 hover:bg-gray-600' 
                  : 'bg-white text-gray-900 hover:bg-gray-100'
         }`}

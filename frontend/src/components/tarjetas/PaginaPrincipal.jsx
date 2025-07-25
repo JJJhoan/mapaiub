@@ -5,7 +5,7 @@ export default function PaginaPrincipal() {
   const { isDark } = useTheme(); // Obtiene el estado del tema
 
   return (
-    <div className={`transition-colors duration-300 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
+    <div className={`transition-colors duration-300 ${isDark ? 'bg-gray-800' : ''}`}>
       <h1 className={`text-lg md:text-xl lg:text-2xl font-bold mb-20 text-center ${
         isDark ? 'text-gray-100' : 'text-slate-950'
       }`}>

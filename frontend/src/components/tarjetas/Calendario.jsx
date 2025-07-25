@@ -47,7 +47,7 @@ export default function Calendario() {
   };
 
   return (
-    <div className={`p-4 sm:p-6 rounded-lg transition-colors duration-300 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
+    <div className={`p-4 sm:p-6 rounded-lg transition-colors duration-300 ${isDark ? 'bg-gray-900' : ''}`}>
       <h2 className={`mb-4 sm:mb-6 text-lg md:text-xl lg:text-2xl font-bold ${
         isDark ? 'text-gray-100' : 'text-slate-950'
       }`}>

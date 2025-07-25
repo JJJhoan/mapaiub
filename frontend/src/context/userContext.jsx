@@ -1,91 +1,130 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+// Actualización del contexto de usuario (userContext.js)
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-export const UserContext = createContext();
-
-export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [sessionTime, setSessionTime] = useState(0);
-
-  // Efecto para el contador de sesión
-  useEffect(() => {
-    let timer;
-    if (user && !user.esInvitado) {
-      timer = setInterval(() => {
-        setSessionTime(prev => prev + 1);
-      }, 1000);
-    } else {
-      setSessionTime(0);
-    }
-    return () => clearInterval(timer);
-  }, [user]);
-
-  const iniciarSesion = (correo, remember = false) => {
-    const newUser = {
-      email: correo,
-      nombre: correo.split('@')[0],
-      rol: correo.includes('admin') ? 'Administrador' : 'Estudiante',
-      esInvitado: false
-    };
-    
-    setUser(newUser);
-    if (remember) {
-      localStorage.setItem('currentUser', JSON.stringify(newUser));
-    }
-    return true;
-  };
-
-  const entrarComoInvitado = () => {
-    const guestUser = {
-      nombre: 'Invitado',
-      rol: 'Invitado',
-      esInvitado: true
-    };
-    setUser(guestUser);
-    localStorage.setItem('currentUser', JSON.stringify(guestUser));
-    return true;
-  };
-
-  const cerrarSesion = () => {
-    setUser(null);
-    setSessionTime(0);
-    localStorage.removeItem('currentUser');
-    return true;
-  };
-
-  // Cargar usuario al iniciar
-  useEffect(() => {
-    const savedUser = localStorage.getItem('currentUser');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-  }, []);
-
-  // Formatear tiempo de sesión
-  const formatSessionTime = () => {
-    const hrs = Math.floor(sessionTime / 3600).toString().padStart(2, '0');
-    const mins = Math.floor((sessionTime % 3600) / 60).toString().padStart(2, '0');
-    const secs = (sessionTime % 60).toString().padStart(2, '0');
-    return `${hrs}:${mins}:${secs}`;
-  };
-
-  return (
-    <UserContext.Provider value={{
-      user,
-      sessionTime: formatSessionTime(),
-      esInvitado: user?.esInvitado || false,
-      iniciarSesion,
-      entrarComoInvitado,
-      cerrarSesion
-    }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
+const UserContext = createContext();
 
 export const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error('useUser debe usarse dentro de un UserProvider');
+    throw new Error("useUser debe ser usado dentro de un UserProvider");
   }
   return context;
+};
+
+export const UserProvider = ({ children }) => {
+  const [usuario, setUsuario] = useState(null);
+  const [esInvitado, setEsInvitado] = useState(false);
+  const [esAdmin, setEsAdmin] = useState(false);
+  const [sessionStartTime, setSessionStartTime] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("usuario");
+    const storedGuest = localStorage.getItem("esInvitado");
+    const storedSessionStart = localStorage.getItem("sessionStartTime");
+    
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      setUsuario(userData);
+      setEsAdmin(userData.email === "admin@unibarranquilla.edu.co");
+    }
+    
+    if (storedGuest === "true") {
+      setEsInvitado(true);
+    }
+    
+    if (storedSessionStart) {
+      setSessionStartTime(parseInt(storedSessionStart, 10));
+    }
+  }, []);
+
+  const iniciarSesion = (email, password, rememberMe) => {
+    // Verificar credenciales de administrador
+    if (email === "admin@unibarranquilla.edu.co" && password === "adminiub") {
+      const userData = { email, isAdmin: true };
+      const startTime = Date.now();
+      
+      setUsuario(userData);
+      setEsAdmin(true);
+      setEsInvitado(false);
+      setSessionStartTime(startTime);
+      
+      if (rememberMe) {
+        localStorage.setItem("usuario", JSON.stringify(userData));
+        localStorage.setItem("sessionStartTime", startTime.toString());
+      }
+      
+      return true;
+    }
+    
+    // Verificar otras credenciales (simulación)
+    if (email && email.includes("@") && password) {
+      const userData = { email, isAdmin: false };
+      const startTime = Date.now();
+      
+      setUsuario(userData);
+      setEsAdmin(false);
+      setEsInvitado(false);
+      setSessionStartTime(startTime);
+      
+      if (rememberMe) {
+        localStorage.setItem("usuario", JSON.stringify(userData));
+        localStorage.setItem("sessionStartTime", startTime.toString());
+      }
+      
+      return true;
+    }
+    
+    return false;
+  };
+
+  const entrarComoInvitado = () => {
+    const startTime = Date.now();
+    
+    setUsuario(null);
+    setEsInvitado(true);
+    setEsAdmin(false);
+    setSessionStartTime(startTime);
+    
+    localStorage.setItem("esInvitado", "true");
+    localStorage.setItem("sessionStartTime", startTime.toString());
+    localStorage.removeItem("usuario");
+  };
+
+  const cerrarSesion = () => {
+    setUsuario(null);
+    setEsInvitado(false);
+    setEsAdmin(false);
+    setSessionStartTime(null);
+    
+    localStorage.removeItem("usuario");
+    localStorage.removeItem("esInvitado");
+    localStorage.removeItem("sessionStartTime");
+  };
+
+  // Calcular el tiempo formateado de sesión
+  const getFormattedSessionTime = () => {
+    if (!sessionStartTime) return "00:00:00";
+    
+    const elapsed = Math.floor((Date.now() - sessionStartTime) / 1000);
+    const hrs = Math.floor(elapsed / 3600);
+    const mins = Math.floor((elapsed % 3600) / 60);
+    const secs = elapsed % 60;
+    
+    return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  return (
+    <UserContext.Provider value={{ 
+      usuario, 
+      esInvitado, 
+      esAdmin,
+      sessionStartTime,
+      getFormattedSessionTime,
+      iniciarSesion, 
+      entrarComoInvitado, 
+      cerrarSesion 
+    }}>
+      {children}
+    </UserContext.Provider>
+  );
 };

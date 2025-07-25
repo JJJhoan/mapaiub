@@ -1,3 +1,4 @@
+// Componente Sidebar actualizado
 import React, { useState } from "react";
 import {
   House,
@@ -64,7 +65,7 @@ function SidebarButtons({ items = [], handleClick, iconosPorEtiqueta, navigate, 
 }
 
 export default function Sidebar({ onSelect }) {
-  const { esInvitado } = useUser();
+  const { esInvitado, esAdmin } = useUser();
   const navigate = useNavigate();
   const { isDark } = useTheme();
   const info = ["Página Principal", "Cómo Usar"];
@@ -88,11 +89,12 @@ export default function Sidebar({ onSelect }) {
     "Iniciar sesión": User,
   };
 
+  // Solo mostrar la sección de administración si el usuario es admin
   const secciones = [
     { titulo: "Inicio", items: info },
     { titulo: "Apps", items: apps },
     { titulo: "Información de Desarrollo", items: dev },
-    ...(!esInvitado ? [{ titulo: "Administración", items: admin }] : []),
+    ...(esAdmin ? [{ titulo: "Administración", items: admin }] : []),
     { titulo: "", items: pref },
   ];
 

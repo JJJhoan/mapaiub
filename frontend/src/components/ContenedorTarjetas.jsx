@@ -40,7 +40,7 @@ export default function ContenedorTarjetas({ seccionActual }) {
   return (
     <div
       ref={scrollRef}
-      className={`select-none relative h-screen w-auto ml-40 sm:ml-14 md:ml-40 overflow-y-scroll custom-scrollbar-hide p-4 flex justify-center items-start transition-all scroll-hide ${
+      className={`select-none relative h-screen w-auto md:ml-40 overflow-y-scroll custom-scrollbar-hide p-4 flex justify-center items-start transition-all scroll-hide ${
         isDark ? 'bg-gray-900' : 'bg-white'
       }`}
     >

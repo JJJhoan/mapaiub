@@ -5,10 +5,12 @@ export default function Tecnologias() {
   const { isDark } = useTheme();
 
   return (
-    <div className={`transition-colors duration-300 ${isDark ? 'bg-gray-800 text-gray-100' : 'bg-white text-slate-950'}`}>
-      <h1 className={`text-lg md:text-xl lg:text-2xl font-bold mb-8 ${isDark ? 'text-gray-100' : 'text-slate-950'}`}>
+    <div className={`transition-colors duration-300 ${isDark ? 'bg-gray-800 text-gray-100' : 'text-slate-950'}`}>
+      <div className="w-full flex justify-center">
+        <h1 className={`text-lg md:text-xl lg:text-2xl font-bold mb-8 ${isDark ? 'text-gray-100' : 'text-slate-950'}`}>
         Tecnologías
-      </h1>
+        </h1> 
+      </div>
       <p className={`mb-8 ${isDark ? 'text-gray-300' : 'text-slate-700'}`}>
         Para este proyecto se decidió utilizar las siguientes tecnologías:
       </p>
