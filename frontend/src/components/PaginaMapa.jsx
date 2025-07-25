@@ -14,7 +14,7 @@ export default function PaginaMapa() {
   const { isDark } = useTheme(); // Usar el contexto de tema
   // Estados principales
   const [sidebarAbierto, setSidebarAbierto] = useState(false);
-  const [mostrarContenido, setMostrarContenido] = useState(true);
+  const [mostrarContenido, setMostrarContenido] = useState(true); 
   const [eventos, setEventos] = useState([]);
   const [filtroDia, setFiltroDia] = useState("Hoy");
   const [filtroHora, setFiltroHora] = useState("Cualquier hora");
@@ -261,7 +261,7 @@ export default function PaginaMapa() {
         <div className={mapContainerClasses}>
           <MapContainer className="w-full h-full">
             <MapSVGWithPopups 
-              svgPath="/src/assets/map.svg"
+              svgPath="/map.svg"
               popupData={popupData}
             />
             <MapControls 
