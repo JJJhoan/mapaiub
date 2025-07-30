@@ -1,3 +1,4 @@
+// src/components/eventos/FormularioEditar.jsx
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,6 +20,9 @@ export default function FormularioEditar({
   setEditarFechaFin,
   editarEsImportante,
   setEditarEsImportante,
+  // --- NUEVO: Estado para ubicacion en edición ---
+  editarUbicacion,
+  setEditarUbicacion,
   editarImagen,
   setEditarImagen,
   editarPreview,
@@ -66,18 +70,6 @@ export default function FormularioEditar({
         <>
           <input
             type="text"
-            placeholder="Nuevo ID (opcional)"
-            value={idEditable}
-            onChange={(e) => setIdEditable(e.target.value)}
-            className={`no-spinner w-full p-2 border rounded mb-2 transition-colors ${
-              isDark
-                ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
-                : 'bg-white border-gray-300 text-gray-800 placeholder-gray-500'
-            }`}
-          />
-
-          <input
-            type="text"
             value={editarTitulo}
             onChange={(e) => setEditarTitulo(e.target.value)}
             className={`w-full p-2 border rounded mb-2 transition-colors ${
@@ -94,6 +86,19 @@ export default function FormularioEditar({
               isDark
                 ? 'bg-gray-700 border-gray-600 text-white'
                 : 'bg-white border-gray-300 text-gray-800'
+            }`}
+          />
+
+          {/* --- NUEVO: Campo para ubicacion en edición --- */}
+          <input
+            type="text"
+            placeholder="Ubicación (ID del lugar en el mapa, opcional)"
+            value={editarUbicacion}
+            onChange={(e) => setEditarUbicacion(e.target.value)}
+            className={`w-full p-2 border rounded mb-2 transition-colors ${
+              isDark
+                ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+                : 'bg-white border-gray-300 text-gray-800 placeholder-gray-500'
             }`}
           />
 

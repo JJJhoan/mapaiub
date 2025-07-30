@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1600 1200">
+  <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #36f;
+      }
+
+      .st0, .st1, .st2, .st3, .st4 {
+        stroke-miterlimit: 10;
+      }
+
+      .st0, .st1, .st2, .st4 {
+        stroke: #000;
+      }
+
+      .st1 {
+        fill: #66c;
+      }
+
+      .st2 {
+        fill: #336;
+      }
+
+      .st5 {
+        fill: #930;
+      }
+
+      .st3 {
+        fill: #2b0f0a;
+        stroke: #1c202d;
+        stroke-width: 4px;
+      }
+
+      .st6 {
+        fill: #f4dcab;
+      }
+
+      .st7 {
+        fill: #c4ac8a;
+      }
+
+      .st4 {
+        fill: #f90;
+      }
+    </style>
+  </defs>
+  <g id="Capa_1">
+    <g>
+      <rect class="st7" x=".5" y=".5" width="1599" height="1199"/>
+      <path d="M1599,1v1198H1V1h1598M1600,0H0v1200h1600V0h0Z"/>
+    </g>
+  </g>
+  <g id="Capa_3">
+    <polyline class="st6" points="570.76 0 1600 0 1600 645.8 1160.24 645.8 1160.24 446.26 1405.96 446.26 1405.96 161.96 570.76 166.28 570.76 0"/>
+  </g>
+  <g id="Capa_2">
+    <g id="salon_x5F_16">
+      <rect class="st2" x="592.1" y="10.53" width="221.8" height="96.94"/>
+      <path class="st2" d="M813.4,11.03v95.94h-220.8V11.03h220.8M814.4,10.03h-222.8v97.94h222.8V10.03h0Z"/>
+    </g>
+    <g id="salon_x5F_17">
+      <rect class="st2" x="819.9" y="10.53" width="221.8" height="96.94"/>
+      <path class="st2" d="M1041.2,11.03v95.94h-220.8V11.03h220.8M1042.2,10.03h-222.8v97.94h222.8V10.03h0Z"/>
+    </g>
+    <g id="salon_x5F_18">
+      <rect class="st2" x="1049.34" y="10.53" width="221.8" height="96.94"/>
+      <path class="st2" d="M1270.64,11.03v95.94h-220.8V11.03h220.8M1271.64,10.03h-222.8v97.94h222.8V10.03h0Z"/>
+    </g>
+    <g id="salon_x5F_19">
+      <rect class="st2" x="1475.91" y="42.15" width="149.44" height="82.23" transform="translate(1467.36 1633.9) rotate(-90)"/>
+      <path class="st2" d="M1509.94,8.89h81.39v148.76h-81.39V8.89M1509.09,8.21v150.11h83.08V8.21h-83.08Z"/>
+    </g>
+    <g id="biblioteca">
+      <rect class="st1" x="1161.07" y="447.34" width="188.33" height="198.68"/>
+      <path class="st1" d="M1348.89,447.83v197.69h-187.31v-197.69h187.31M1349.92,446.84h-189.36v199.67h189.36v-199.67h0Z"/>
+    </g>
+    <g id="escalera_x5F_4">
+      <rect class="st0" x="1357.13" y="528.37" width="58.04" height="117.58"/>
+      <path class="st0" d="M1414.68,528.87v116.59h-57.04v-116.59h57.04M1415.68,527.87h-59.04v118.58h59.04v-118.58h0Z"/>
+      <line class="st3" x1="1358.17" y1="540.18" x2="1414.15" y2="540.18"/>
+      <line class="st3" x1="1358.17" y1="551.32" x2="1414.15" y2="551.32"/>
+      <line class="st3" x1="1358.17" y1="562.46" x2="1414.15" y2="562.46"/>
+      <line class="st3" x1="1358.17" y1="573.61" x2="1414.15" y2="573.61"/>
+      <line class="st3" x1="1358.17" y1="584.75" x2="1414.15" y2="584.75"/>
+      <line class="st3" x1="1358.17" y1="595.89" x2="1414.15" y2="595.89"/>
+      <line class="st3" x1="1358.17" y1="607.04" x2="1414.15" y2="607.04"/>
+      <line class="st3" x1="1358.17" y1="618.18" x2="1414.15" y2="618.18"/>
+      <line class="st3" x1="1358.17" y1="629.32" x2="1414.15" y2="629.32"/>
+      <line class="st3" x1="1358.17" y1="640.46" x2="1414.15" y2="640.46"/>
+    </g>
+    <g id="escalera_x5F_5">
+      <rect class="st0" x="1277.71" y="10.53" width="58.04" height="118.08" transform="translate(2613.46 139.14) rotate(180)"/>
+      <path class="st0" d="M1278.2,128.11V11.03h57.04v117.08h-57.04M1277.2,129.11h59.04V10.03h-59.04v119.08h0Z"/>
+      <line class="st3" x1="1334.71" y1="116.75" x2="1278.73" y2="116.75"/>
+      <line class="st3" x1="1334.71" y1="105.56" x2="1278.73" y2="105.56"/>
+      <line class="st3" x1="1334.71" y1="94.37" x2="1278.73" y2="94.37"/>
+      <line class="st3" x1="1334.71" y1="83.18" x2="1278.73" y2="83.18"/>
+      <line class="st3" x1="1334.71" y1="71.99" x2="1278.73" y2="71.99"/>
+      <line class="st3" x1="1334.71" y1="60.8" x2="1278.73" y2="60.8"/>
+      <line class="st3" x1="1334.71" y1="49.61" x2="1278.73" y2="49.61"/>
+      <line class="st3" x1="1334.71" y1="38.42" x2="1278.73" y2="38.42"/>
+      <line class="st3" x1="1334.71" y1="27.23" x2="1278.73" y2="27.23"/>
+      <line class="st3" x1="1334.71" y1="16.04" x2="1278.73" y2="16.04"/>
+    </g>
+    <g id="salon_x5F_20">
+      <rect class="st2" x="1481.07" y="196.58" width="138.22" height="82.23" transform="translate(1312.48 1787.88) rotate(-90)"/>
+      <path class="st2" d="M1509.49,168.9h81.39v137.59h-81.39v-137.59M1508.64,168.28v138.84h83.08v-138.84h-83.08Z"/>
+    </g>
+    <g id="salon_x5F_21">
+      <rect class="st2" x="1485.24" y="339.58" width="130.73" height="82.23" transform="translate(1169.9 1931.3) rotate(-90)"/>
+      <path class="st2" d="M1509.91,315.63h81.39v130.14h-81.39v-130.14M1509.06,315.04v131.32h83.08v-131.32h-83.08Z"/>
+    </g>
+    <g id="salon_x5F_22">
+      <rect class="st2" x="1485.24" y="478.83" width="130.73" height="82.23" transform="translate(1030.66 2070.55) rotate(-90)"/>
+      <path class="st2" d="M1509.91,454.87h81.39v130.14h-81.39v-130.14M1509.06,454.28v131.32h83.08v-131.32h-83.08Z"/>
+    </g>
+    <rect id="oficina_x5F_ingles" class="st4" x="1403.96" y="546.23" width="118.11" height="82.44" transform="translate(2050.47 -875.57) rotate(90)"/>
+    <rect id="oficina" class="st4" x="1402.38" y="-12.33" width="82.79" height="123.87" transform="translate(1493.39 -1394.17) rotate(90)"/>
+  </g>
+  <g id="Capa_4">
+    <rect class="st5" x="1405.96" y="161.96" width="15.84" height="285.84"/>
+    <rect class="st5" x="988.71" y="-266.55" width="15.84" height="849.33" transform="translate(838.51 1154.75) rotate(-90)"/>
+    <rect class="st5" x="570.76" width="15.84" height="166.04"/>
+    <rect class="st5" x="1378.24" y="418.64" width="15.84" height="71.28" transform="translate(1840.44 -931.88) rotate(90)"/>
+  </g>
+</svg>

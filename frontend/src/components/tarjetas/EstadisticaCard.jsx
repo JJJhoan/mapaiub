@@ -39,11 +39,6 @@ export default function EstadisticaCard({
     `}>
       <div className="flex justify-between items-center mb-4">
         <span className={`text-sm ${isDark ? 'text-gray-300' : 'text-slate-900'}`}>{title}</span>
-        <button className={`text-sm hover:underline ${
-          isDark ? 'text-amber-400' : 'text-slate-800'
-        }`}>
-          Ver Más
-        </button>
       </div>
       <div className={`text-3xl font-bold mb-1 ${
         isDark ? 'text-amber-400' : 'text-slate-900'
