@@ -1,4 +1,3 @@
-# eventos_bp.py
 from flask import Blueprint, request, jsonify
 from db import mysql
 import cloudinary.uploader
@@ -31,7 +30,6 @@ def crear_evento():
         hora_inicio_str = request.form.get('hora_inicio', '').strip()
         hora_fin_str = request.form.get('hora_fin', '').strip()
         es_importante = request.form.get('es_importante', '').strip()
-        # --- NUEVO: Obtener ubicacion (opcional) ---
         ubicacion = request.form.get('ubicacion', '').strip()
         imagen = request.files.get('imagen')
 
@@ -118,7 +116,6 @@ def update_evento():
         hora_inicio_str = request.form.get('hora_inicio', '').strip()
         hora_fin_str = request.form.get('hora_fin', '').strip()
         es_importante = request.form.get('es_importante', '').strip()
-        # --- NUEVO: Obtener ubicacion (opcional) ---
         ubicacion = request.form.get('ubicacion', '').strip()
         imagen = request.files.get('imagen')
 
